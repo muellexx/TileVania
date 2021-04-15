@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     // Config
     [SerializeField] float runSpeed = 10f;
     [SerializeField] float jumpSpeed = 5f;
+    [SerializeField] float climbSpeed = 5f;
 
     // State
     bool isAlive = true;
@@ -16,6 +17,7 @@ public class Player : MonoBehaviour
     SpriteRenderer myRenderer;
     Animator myAnimator;
     Collider2D myCollider;
+    float gravityScaleAtStart;
 
     // Start is called before the first frame update
     void Start()
@@ -24,12 +26,14 @@ public class Player : MonoBehaviour
         myRenderer = GetComponent<SpriteRenderer>();
         myAnimator = GetComponent<Animator>();
         myCollider = GetComponent<Collider2D>();
+        gravityScaleAtStart = myRigidBody.gravityScale;
     }
 
     // Update is called once per frame
     void Update()
     {
         Run();
+        Climb();
         Jump();
         FlipSprite();
     }
@@ -47,13 +51,32 @@ public class Player : MonoBehaviour
 
     private void Jump()
     {
-        if (!myCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))) return;
+        if (!myCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))&&
+            !myCollider.IsTouchingLayers(LayerMask.GetMask("Ladder"))) return;
         if (Input.GetButtonDown("Jump"))
         {
             Vector2 jumpVelocityToAdd = new Vector2(0f, jumpSpeed);
             myRigidBody.velocity += jumpVelocityToAdd;
         }
         
+    }
+
+    private void Climb()
+    {
+        if (!myCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")))
+        {
+            myAnimator.SetBool("Climbing", false);
+            myRigidBody.gravityScale = gravityScaleAtStart;
+            return;
+        }
+        var deltaY = Input.GetAxis("Vertical") * climbSpeed;
+
+        Vector2 playerVelocity = new Vector2(myRigidBody.velocity.x, deltaY);
+        myRigidBody.velocity = playerVelocity;
+        myRigidBody.gravityScale = 0;
+
+        bool playerIsClimbing = Mathf.Abs(myRigidBody.velocity.y) > Mathf.Epsilon;
+        myAnimator.SetBool("Climbing", playerIsClimbing);
     }
 
     private void FlipSprite()

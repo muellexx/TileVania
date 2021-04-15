@@ -12,7 +12,7 @@ TagManager:
   - Water
   - UI
   - 
-  - 
+  - Ladder
   - Ground
   - 
   - 
@@ -46,4 +46,10 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 1438922763
+    locked: 0
+  - name: Ladder
+    uniqueID: 3829940139
+    locked: 0
+  - name: Player
+    uniqueID: 3105417423
     locked: 0
