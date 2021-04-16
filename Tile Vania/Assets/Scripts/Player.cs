@@ -5,7 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // Config
-    [SerializeField] float runSpeed = 10f;
+    [SerializeField] float walkSpeed = 7f;
+    [SerializeField] float runSpeed = 12f;
     [SerializeField] float jumpSpeed = 5f;
     [SerializeField] float climbSpeed = 5f;
     [SerializeField] Vector2 deathKick = new Vector2(25f, 25f);
@@ -40,18 +41,35 @@ public class Player : MonoBehaviour
         Climb();
         Jump();
         FlipSprite();
-        Die();
+        EnemyCollision();
+        HazardCollision();
     }
 
     private void Run()
     {
-        var deltaX = Input.GetAxis("Horizontal") * runSpeed;
+        var deltaX = Input.GetAxis("Horizontal");
+        if(Input.GetButton("Run"))
+        {
+            deltaX *= runSpeed;
+            myAnimator.SetBool("Running", true);
+            myAnimator.SetBool("Walking", false);
+        }
+        else
+        {
+            deltaX *= walkSpeed;
+            myAnimator.SetBool("Walking", true);
+            myAnimator.SetBool("Running", false);
+        }
 
         Vector2 playerVelocity = new Vector2(deltaX, myRigidBody.velocity.y);
         myRigidBody.velocity = playerVelocity;
         
         bool playerHasHorizontalSpeed = Mathf.Abs(myRigidBody.velocity.x) > Mathf.Epsilon;
-        myAnimator.SetBool("Running", playerHasHorizontalSpeed);
+        if (!playerHasHorizontalSpeed)
+        {
+            myAnimator.SetBool("Walking", false);
+            myAnimator.SetBool("Running", false);
+        }
     }
 
     private void Jump()
@@ -71,7 +89,10 @@ public class Player : MonoBehaviour
         if (!myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")))
         {
             myAnimator.SetBool("Climbing", false);
-            myRigidBody.gravityScale = gravityScaleAtStart;
+            if (!myFeet.IsTouchingLayers(LayerMask.GetMask("Ladder")))
+            {
+                myRigidBody.gravityScale = gravityScaleAtStart;
+            }
             return;
         }
         var deltaY = Input.GetAxis("Vertical") * climbSpeed;
@@ -84,17 +105,31 @@ public class Player : MonoBehaviour
         myAnimator.SetBool("Climbing", playerIsClimbing);
     }
 
-    private void Die()
+    private void EnemyCollision()
     {
         if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemy")))
         {
-            myAnimator.SetTrigger("Dying");
-            myRigidBody.velocity = deathKick;
-            PhysicsMaterial2D M = Instantiate(myBodyCollider.sharedMaterial);
-            M.friction = 1;
-            myBodyCollider.sharedMaterial = M;
-            isAlive = false;
+            Die();
         }
+    }
+
+    private void HazardCollision()
+    {
+        if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Hazard")))
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        myAnimator.SetTrigger("Dying");
+        myRigidBody.velocity = deathKick;
+        PhysicsMaterial2D M = Instantiate(myBodyCollider.sharedMaterial);
+        M.friction = 1;
+        myBodyCollider.sharedMaterial = M;
+        myRigidBody.gravityScale = gravityScaleAtStart;
+        isAlive = false;
     }
 
     private void FlipSprite()
