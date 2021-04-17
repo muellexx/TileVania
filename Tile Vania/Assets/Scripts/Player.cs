@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     Animator myAnimator;
     CapsuleCollider2D myBodyCollider;
     BoxCollider2D myFeet;
+    GameSession gameSession;
     float gravityScaleAtStart;
 
     // Start is called before the first frame update
@@ -31,6 +32,7 @@ public class Player : MonoBehaviour
         myBodyCollider = GetComponent<CapsuleCollider2D>();
         myFeet = GetComponent<BoxCollider2D>();
         gravityScaleAtStart = myRigidBody.gravityScale;
+        gameSession = FindObjectOfType<GameSession>();
     }
 
     // Update is called once per frame
@@ -109,7 +111,7 @@ public class Player : MonoBehaviour
     {
         if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemy")))
         {
-            Die();
+            StartCoroutine(Die());
         }
     }
 
@@ -121,7 +123,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void Die()
+    IEnumerator Die()
     {
         myAnimator.SetTrigger("Dying");
         myRigidBody.velocity = deathKick;
@@ -130,6 +132,8 @@ public class Player : MonoBehaviour
         myBodyCollider.sharedMaterial = M;
         myRigidBody.gravityScale = gravityScaleAtStart;
         isAlive = false;
+        yield return new WaitForSeconds(2);
+        gameSession.ProcessPlayerDeath();
     }
 
     private void FlipSprite()
@@ -143,8 +147,11 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void onTriggerEnter2D()
+    public void StopMovement()
     {
-
+        isAlive = false;
+        myAnimator.SetBool("Climbing", false);
+        myAnimator.SetBool("Walking", false);
+        myAnimator.SetBool("Running", false);
     }
 }

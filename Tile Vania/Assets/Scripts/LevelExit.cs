@@ -19,6 +19,7 @@ public class LevelExit : MonoBehaviour
 
     IEnumerator LoadNextScene()
     {
+        FindObjectOfType<Player>().StopMovement();
         yield return new WaitForSeconds(timeToWait);
         var currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex + 1);
