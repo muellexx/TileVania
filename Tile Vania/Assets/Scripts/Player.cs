@@ -11,6 +11,9 @@ public class Player : MonoBehaviour
     [SerializeField] float climbSpeed = 5f;
     [SerializeField] Vector2 deathKick = new Vector2(25f, 25f);
 
+    [SerializeField] AudioClip deathSound;
+    [Range(0f, 1f)][SerializeField] float deathVolume = 1f;
+
     // State
     bool isAlive = true;
 
@@ -119,7 +122,7 @@ public class Player : MonoBehaviour
     {
         if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Hazard")))
         {
-            Die();
+            StartCoroutine(Die());
         }
     }
 
@@ -132,6 +135,14 @@ public class Player : MonoBehaviour
         myBodyCollider.sharedMaterial = M;
         myRigidBody.gravityScale = gravityScaleAtStart;
         isAlive = false;
+        if (deathSound != null)
+        {
+            GameObject audioListener = GameObject.FindWithTag("AudioListener");
+            AudioSource.PlayClipAtPoint(
+                deathSound,
+                audioListener.transform.position,
+                deathVolume);
+        }
         yield return new WaitForSeconds(2);
         gameSession.ProcessPlayerDeath();
     }

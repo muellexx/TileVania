@@ -4,8 +4,19 @@ using UnityEngine;
 
 public class CoinPickup : MonoBehaviour
 {
+    [SerializeField] int coinValue = 1;
+
     [SerializeField] AudioClip coinSound;
     [Range(0f, 1f)][SerializeField] float coinVolume = 1f;
+
+    GameSession gameSession;
+
+    bool wasCollected = false;
+
+    private void Start()
+    {
+        gameSession = FindObjectOfType<GameSession>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -14,13 +25,14 @@ public class CoinPickup : MonoBehaviour
 
     private void PickupCoin()
     {
+        if(wasCollected) return;
         if (coinSound != null)
         {
-            AudioSource.PlayClipAtPoint(
-                coinSound,
-                Camera.main.transform.position,
-                coinVolume);
+            GameObject audioListener = GameObject.FindWithTag("AudioListener");
+            AudioSource.PlayClipAtPoint(coinSound, audioListener.transform.position, coinVolume);
         }
+        gameSession.AddCoins(coinValue);
+        wasCollected = true;
         Destroy(gameObject);
     }
 }
