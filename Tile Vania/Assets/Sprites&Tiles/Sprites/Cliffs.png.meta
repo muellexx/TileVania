@@ -380,6 +380,24 @@ TextureImporter:
   - first:
       213: 7531685588302596312
     second: Cliffs_125
+  - first:
+      213: -9136132249932721050
+    second: Cliffs_126
+  - first:
+      213: 2132618835139490605
+    second: Cliffs_127
+  - first:
+      213: -8174414593857351793
+    second: Cliffs_128
+  - first:
+      213: 4294542979121949280
+    second: Cliffs_129
+  - first:
+      213: -6281938563052671617
+    second: Cliffs_130
+  - first:
+      213: -2868809918958121
+    second: Cliffs_131
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -3128,8 +3146,8 @@ TextureImporter:
       name: Cliffs_120
       rect:
         serializedVersion: 2
-        x: 96
-        y: 32
+        x: 192
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -3149,8 +3167,8 @@ TextureImporter:
       name: Cliffs_121
       rect:
         serializedVersion: 2
-        x: 128
-        y: 32
+        x: 224
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -3170,8 +3188,8 @@ TextureImporter:
       name: Cliffs_122
       rect:
         serializedVersion: 2
-        x: 160
-        y: 32
+        x: 256
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -3192,7 +3210,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 0
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -3213,7 +3231,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 0
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -3234,7 +3252,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 160
-        y: 0
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -3246,6 +3264,132 @@ TextureImporter:
       bones: []
       spriteID: 8d884b2532ce58860800000000000000
       internalID: 7531685588302596312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cliffs_126
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66415cdbf10f53180800000000000000
+      internalID: -9136132249932721050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cliffs_127
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d23fbcd0885989d10800000000000000
+      internalID: 2132618835139490605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cliffs_128
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8f0d5e9c35ae8e80800000000000000
+      internalID: -8174414593857351793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cliffs_129
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06a26370618499b30800000000000000
+      internalID: 4294542979121949280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cliffs_130
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7dea68f82212d8a0800000000000000
+      internalID: -6281938563052671617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cliffs_131
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d53ad325dec5fff0800000000000000
+      internalID: -2868809918958121
       vertices: []
       indices: 
       edges: []
