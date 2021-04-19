@@ -9,13 +9,13 @@ public class CoinPickup : MonoBehaviour
     [SerializeField] AudioClip coinSound;
     [Range(0f, 1f)][SerializeField] float coinVolume = 1f;
 
-    GameSession gameSession;
+    // GameSession gameSession;
 
     bool wasCollected = false;
 
     private void Start()
     {
-        gameSession = FindObjectOfType<GameSession>();
+        // gameSession = FindObjectOfType<GameSession>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -25,6 +25,7 @@ public class CoinPickup : MonoBehaviour
 
     private void PickupCoin()
     {
+        GameSession gameSession = FindObjectOfType<GameSession>();
         if(wasCollected) return;
         if (coinSound != null)
         {

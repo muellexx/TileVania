@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Lava Top
   m_EditorClassIdentifier: 
   m_AnimatedSprites:
-  - {fileID: -1743517728042660612, guid: a4235a39b0bd35f0192a8d68c9e2a022, type: 3}
-  - {fileID: -8328345310558147132, guid: a4235a39b0bd35f0192a8d68c9e2a022, type: 3}
-  - {fileID: 5024053459138425414, guid: a4235a39b0bd35f0192a8d68c9e2a022, type: 3}
+  - {fileID: 4617039815195851526, guid: 475381bb660ee01baa23857d5088c6c7, type: 3}
+  - {fileID: 2317696459752114102, guid: 475381bb660ee01baa23857d5088c6c7, type: 3}
+  - {fileID: 8749446533641785416, guid: 475381bb660ee01baa23857d5088c6c7, type: 3}
   m_MinSpeed: 5
   m_MaxSpeed: 5
   m_AnimationStartTime: 0

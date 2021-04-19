@@ -86,11 +86,13 @@ public class GameSession : MonoBehaviour
 
     private void UpdateLivesText()
     {
+        if (!livesText) return;
         livesText.text = "L: " + playerLives.ToString();
     }
 
     private void UpdateCoinsText()
     {
+        if (!coinText) return;
         coinText.text = "C: " + coins.ToString();
     }
 }

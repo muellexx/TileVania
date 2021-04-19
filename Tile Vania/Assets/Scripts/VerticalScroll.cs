@@ -27,6 +27,5 @@ public class VerticalScroll : MonoBehaviour
             yMove *= fastMultiplier;
         }
         transform.Translate(new Vector2(0f, yMove));
-        Debug.Log(transform.position.y);
     }
 }

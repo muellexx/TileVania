@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: Cliffs_89
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -2650365193913162142, guid: a4235a39b0bd35f0192a8d68c9e2a022, type: 3}
+  m_Sprite: {fileID: 4335760977630212300, guid: 475381bb660ee01baa23857d5088c6c7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

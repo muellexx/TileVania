@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     Animator myAnimator;
     CapsuleCollider2D myBodyCollider;
     BoxCollider2D myFeet;
-    GameSession gameSession;
+    // GameSession gameSession;
     float gravityScaleAtStart;
 
     // Start is called before the first frame update
@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
         myBodyCollider = GetComponent<CapsuleCollider2D>();
         myFeet = GetComponent<BoxCollider2D>();
         gravityScaleAtStart = myRigidBody.gravityScale;
-        gameSession = FindObjectOfType<GameSession>();
+        // gameSession = FindObjectOfType<GameSession>();
     }
 
     // Update is called once per frame
@@ -144,6 +144,7 @@ public class Player : MonoBehaviour
                 deathVolume);
         }
         yield return new WaitForSeconds(2);
+        GameSession gameSession = FindObjectOfType<GameSession>();
         gameSession.ProcessPlayerDeath();
     }
 
