@@ -157,7 +157,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 5
   runSpeed: 8
-  jumpSpeed: 22
+  jumpSpeed: 13
+  jumpTimer: 0.2
   climbSpeed: 5
   deathKick: {x: 0, y: 15}
   deathSound: {fileID: 8300000, guid: 9808806b3fdcd83c6833184ccd5c92eb, type: 3}

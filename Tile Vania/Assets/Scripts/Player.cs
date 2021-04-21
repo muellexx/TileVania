@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] float walkSpeed = 7f;
     [SerializeField] float runSpeed = 12f;
     [SerializeField] float jumpSpeed = 5f;
+    [SerializeField] float jumpTimer = 2f;
     [SerializeField] float climbSpeed = 5f;
     [SerializeField] Vector2 deathKick = new Vector2(25f, 25f);
 
@@ -16,6 +18,7 @@ public class Player : MonoBehaviour
 
     // State
     bool isAlive = true;
+    float jumpHoldTime;
 
     // Cached References
     Rigidbody2D myRigidBody;
@@ -23,6 +26,7 @@ public class Player : MonoBehaviour
     Animator myAnimator;
     CapsuleCollider2D myBodyCollider;
     BoxCollider2D myFeet;
+
     // GameSession gameSession;
     float gravityScaleAtStart;
 
@@ -79,12 +83,22 @@ public class Player : MonoBehaviour
 
     private void Jump()
     {
-        if (!myFeet.IsTouchingLayers(LayerMask.GetMask("Ground"))&&
-            !myFeet.IsTouchingLayers(LayerMask.GetMask("Ladder"))) return;
-        if (Input.GetButtonDown("Jump"))
+        // if (!myFeet.IsTouchingLayers(LayerMask.GetMask("Ground"))&&
+        //     !myFeet.IsTouchingLayers(LayerMask.GetMask("Ladder"))) return;
+        if (Input.GetButtonDown("Jump")&&
+            myFeet.IsTouchingLayers(LayerMask.GetMask("Ground"))||
+            (myFeet.IsTouchingLayers(LayerMask.GetMask("Ladder"))&&
+            !myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Ladder"))))
         {
-            Vector2 jumpVelocityToAdd = new Vector2(0f, jumpSpeed);
-            myRigidBody.velocity += jumpVelocityToAdd;
+            jumpHoldTime = Time.timeSinceLevelLoad;
+        }
+        if (Input.GetButton("Jump"))
+        {
+            if (Time.timeSinceLevelLoad - jumpHoldTime <= jumpTimer)
+            {
+                Vector2 jumpVelocity = new Vector2(myRigidBody.velocity.x, jumpSpeed);
+                myRigidBody.velocity = jumpVelocity;
+            }
         }
         
     }
