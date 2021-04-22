@@ -111,9 +111,11 @@ public class Player : MonoBehaviour
             if (!myFeet.IsTouchingLayers(LayerMask.GetMask("Ladder")))
             {
                 myRigidBody.gravityScale = gravityScaleAtStart;
+                myAnimator.SetBool("OnLadder", false);
             }
             return;
         }
+        myAnimator.SetBool("OnLadder", true);
         var deltaY = Input.GetAxis("Vertical") * climbSpeed;
 
         Vector2 playerVelocity = new Vector2(myRigidBody.velocity.x, deltaY);
