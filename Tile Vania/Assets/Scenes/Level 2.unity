@@ -50664,15 +50664,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2248061503117491818, guid: e5b9a76ae333d8d85bce1eab1855824b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.28981
+      value: -11.723679
       objectReference: {fileID: 0}
     - target: {fileID: 2248061503117491818, guid: e5b9a76ae333d8d85bce1eab1855824b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.055433
+      value: -3.0554328
       objectReference: {fileID: 0}
     - target: {fileID: 2248061503117491861, guid: e5b9a76ae333d8d85bce1eab1855824b, type: 3}
       propertyPath: orthographic size
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2248061504108179760, guid: e5b9a76ae333d8d85bce1eab1855824b, type: 3}
       propertyPath: m_BoundingShape2D
