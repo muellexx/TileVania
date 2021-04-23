@@ -348,7 +348,5 @@ MonoBehaviour:
   coinsPerLive: 2
   livesText: {fileID: 819195372}
   coinText: {fileID: 229722102}
-  liveUpSound: {fileID: 8300000, guid: f6f2ebda6c2337408a7f5fb81af0bd26, type: 3}
+  liveUpSound: {fileID: 8300000, guid: b8cf59fcecbb775d3b04d6cf6542541b, type: 3}
   liveUpVolume: 1
-  deathSound: {fileID: 8300000, guid: 9808806b3fdcd83c6833184ccd5c92eb, type: 3}
-  deathVolume: 1

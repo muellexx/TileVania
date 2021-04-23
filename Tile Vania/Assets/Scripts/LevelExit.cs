@@ -8,6 +8,9 @@ public class LevelExit : MonoBehaviour
     [SerializeField] int timeToWait = 2;
     [SerializeField] GameObject exitVFX;
 
+    [SerializeField] AudioClip winSound;
+    [Range(0f, 1f)][SerializeField] float winVolume = 1f;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         GameObject particles = Instantiate(
@@ -20,6 +23,11 @@ public class LevelExit : MonoBehaviour
     IEnumerator LoadNextScene()
     {
         FindObjectOfType<Player>().StopMovement();
+        if (winSound != null)
+        {
+            GameObject audioListener = GameObject.FindWithTag("AudioListener");
+            AudioSource.PlayClipAtPoint(winSound, audioListener.transform.position, winVolume);
+        }
         yield return new WaitForSeconds(timeToWait);
         var currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex + 1);

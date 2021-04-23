@@ -123,7 +123,12 @@ public class Player : MonoBehaviour
         myRigidBody.gravityScale = 0;
 
         bool playerIsClimbing = Mathf.Abs(myRigidBody.velocity.y) > Mathf.Epsilon;
-        myAnimator.SetBool("Climbing", playerIsClimbing);
+        if (playerIsClimbing)
+        {
+            myAnimator.SetBool("Climbing", true);
+            myAnimator.SetBool("Walking", false);
+            myAnimator.SetBool("Running", false);
+        }
     }
 
     private void EnemyCollision()
